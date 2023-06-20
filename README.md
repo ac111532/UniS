@@ -10,8 +10,6 @@
     A Student built uniform shop that aims to be functional and aesthetically pleasing 
     <br/>
     <br/>
-    <a href="https://github.com/ac111532/UniS">View Demo</a>
-    .
     <a href="https://github.com/ac111532/UniS/issues">Report Bug</a>
     .
     <a href="https://github.com/ac111532/UniS/issues">Request Feature</a>
