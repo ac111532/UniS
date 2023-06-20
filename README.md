@@ -1,7 +1,7 @@
 <br/>
 <p align="center">
   <a href="https://github.com/ac111532/UniS">
-    <img src="Avcoly.png" alt="Logo" width="80" height="80">
+    <img src="Avcoly.png" alt="Logo" width="391" height="152">
   </a>
 
   <h3 align="center">Avondale College Uniform Shop (UniS)</h3>
