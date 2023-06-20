@@ -4,24 +4,24 @@ namespace UniS.Models
 {
     public class Product
     {
-        public int Product_ID { get; set; }
+        public int ProductID { get; set; }
 
         [Required(ErrorMessage = "Product name is required")]
-        public string Product_Name { get; set; }
+        public string ProductName { get; set; }
 
         [Required(ErrorMessage = "Product description is required")]
-        public string Product_Description { get; set; }
+        public string ProductDescription { get; set; }
 
         [Required(ErrorMessage = "Product size is required")]
-        public string Product_Size { get; set; }
+        public string ProductSize { get; set; }
 
         [Required(ErrorMessage = "Product price is required")]
         [Range(0, double.MaxValue, ErrorMessage = "Product price must be a positive number")]
-        public decimal Product_Price { get; set; }
+        public decimal ProductPrice { get; set; }
 
         [Required(ErrorMessage = "Product stock is required")]
         [Range(0, int.MaxValue, ErrorMessage = "Product stock must be a positive integer")]
-        public int Product_Stock { get; set; }
+        public int ProductStock { get; set; }
 
         public ICollection<CartItem> CartItems { get; set; }
         public ICollection<OrderItem> OrderItems { get; set; }
@@ -29,4 +29,17 @@ namespace UniS.Models
         // Additional validation rules could be added here
 
     }
-} 
+}
+
+/* 
+Custom datatype
+
+Public enum XXX
+{
+    X,X,X
+}
+
+then
+
+Public XX XX { get; set; }
+*/
