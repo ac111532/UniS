@@ -30,5 +30,5 @@ public class Customer
     public ICollection<Transaction> Transactions { get; set; }
 
     // Additional validation rules could be added here
-
+    //This Validation is missing naming.
 }
