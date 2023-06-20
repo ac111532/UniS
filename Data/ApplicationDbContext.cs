@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using UniS.Models;
 
 namespace UniS.Data
 {
@@ -9,5 +10,12 @@ namespace UniS.Data
             : base(options)
         {
         }
+        public DbSet<Cart>? Cart { get; set; }
+        public DbSet<UniS.Models.CartItem>? CartItem { get; set; }
+        public DbSet<Customer>? Customer { get; set; }
+        public DbSet<Order>? Order { get; set; }
+        public DbSet<OrderItem>? OrderItem { get; set; }
+        public DbSet<UniS.Models.Product>? Product { get; set; }
+        public DbSet<Transaction>? Transaction { get; set; }
     }
 }
