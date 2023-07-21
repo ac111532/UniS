@@ -57,3 +57,29 @@
 }
     </tbody>
 </table>
+
+<div class="w-100 mt-4 d-flex flex-wrap ">
+    @foreach (var item in Model)
+    {
+        <div class="card mx-3 mb-4" style="width: 11rem;">
+            @*@if (string.IsNullOrEmpty(Product.Image))
+        {
+        <img style="width:100%;height:180px" src="/img/NoImage.png" class="card-img-top" alt="...">
+
+        }
+        else
+        {
+        <img style="width:100%;height:180px" src="/img/@Product.Image" class="card-img-top" alt="...">
+        }*/*@
+            <div class="card-body">
+                <h5 class="card-title">@item.ProductName</h5>
+                <p class="card-text">
+                    <b>Name: </b>@item.ProductName <br />
+                    <b>Description: </b>@item.ProductDescription <br />
+                    <b>Price: </b>@item.ProductPrice
+                </p>
+                <button type="button" onclick="add(@item.ProductID)" class="btn btn-primary">Add to cart</button>
+            </div>
+        </div>
+    }
+</div>

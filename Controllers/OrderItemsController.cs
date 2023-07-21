@@ -61,7 +61,7 @@ namespace UniS.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("OrderItemID,OrderID,ProductID,Quantity")] OrderItem orderItem)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 _context.Add(orderItem);
                 await _context.SaveChangesAsync();
@@ -102,7 +102,7 @@ namespace UniS.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {

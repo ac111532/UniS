@@ -23,7 +23,7 @@ public class Customer
 
     [Required(ErrorMessage = "Address is required")]
     [StringLength(100, ErrorMessage = "Address cannot be longer than 100 characters")]
-    public string CustomeAddress { get; set; }
+    public string CustomerAddress { get; set; }
 
     public ICollection<Order> Orders { get; set; }
     public ICollection<Cart> Carts { get; set; }

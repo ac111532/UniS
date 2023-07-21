@@ -58,7 +58,7 @@ namespace UniS.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CartItemID,CartID,ProductID,CartQuantity")] CartItem cartItem)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 _context.Add(cartItem);
                 await _context.SaveChangesAsync();
@@ -95,7 +95,7 @@ namespace UniS.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {

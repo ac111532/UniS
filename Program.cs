@@ -1,8 +1,5 @@
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using UniS.Data;
-using UniS.Areas.Identity.Data;
 using UniS.Data;
 
 var builder = WebApplication.CreateBuilder(args);
