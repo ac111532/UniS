@@ -55,7 +55,7 @@ namespace UniS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CustomerID,CustomerFirstName,CustomerLastName,CustomerEmail,CustomerPhoneNumber,CustomeAddress")] Customer customer)
+        public async Task<IActionResult> Create([Bind("CustomerID,CustomerFirstName,CustomerLastName,CustomerEmail,CustomerPhoneNumber,CustomerAddress")] Customer customer)
         {
             if (!ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace UniS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CustomerID,CustomerFirstName,CustomerLastName,CustomerEmail,CustomerPhoneNumber,CustomeAddress")] Customer customer)
+        public async Task<IActionResult> Edit(int id, [Bind("CustomerID,CustomerFirstName,CustomerLastName,CustomerEmail,CustomerPhoneNumber,CustomerAddress")] Customer customer)
         {
             if (id != customer.CustomerID)
             {

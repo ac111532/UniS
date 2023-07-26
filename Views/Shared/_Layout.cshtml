@@ -23,10 +23,15 @@
         <div>
             <ul id="navbar">
                 <button class="button hovery" onclick="window.location.href='https://example.com'">Home</button>
-                <button class="button hovery" onclick="window.location.href='https://example.com'">Shop</button>
                 <button class="button hovery" onclick="window.location.href='https://example.com'">About</button>
-                <button class="button hovery" onclick="window.location.href='https://www.avcol.school.nz/'">Back to Avcol site</button>
-                <li><a href="cart.html"><span class="material-symbols-outlined">shopping_cart</span></a></li>
+                <a asp-area="" asp-controller="Products" class="button hovery">Products</a>
+                <a asp-area="" asp-controller="CartItems" class="button hovery">CartItem</a>
+                <a asp-area="" asp-controller="Customers" class="button hovery">Customer</a>
+                <a asp-area="" asp-controller="Orders" class="button hovery">Order</a>
+                <a asp-area="" asp-controller="OrderItems" class="button hovery">OrderItem</a>
+                <a asp-area="" asp-controller="Transactions" class="button hovery">Transaction</a>
+                <button class="button hovery" onclick="window.location.href='https://www.avcol.school.nz/'">Back to Avcol site</button>                
+
             </ul>
         </div>
     </div>

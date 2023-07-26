@@ -26,7 +26,7 @@ namespace UniS.Models
         public ICollection<CartItem> CartItems { get; set; }
         public ICollection<OrderItem> OrderItems { get; set; }
 
-        // Additional validation rules could be added here
+        // Additional validation rules could be added hereS
 
     }
 }

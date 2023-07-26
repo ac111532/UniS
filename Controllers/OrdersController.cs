@@ -47,7 +47,7 @@ namespace UniS.Controllers
         // GET: Orders/Create
         public IActionResult Create()
         {
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "CustomeAddress");
+            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "CustomerFirstName");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace UniS.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "CustomeAddress", order.CustomerID);
+            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "CustomerFirstName", order.CustomerID);
             return View(order);
         }
 
@@ -81,7 +81,7 @@ namespace UniS.Controllers
             {
                 return NotFound();
             }
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "CustomeAddress", order.CustomerID);
+            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "CustomerFirstName", order.CustomerID);
             return View(order);
         }
 
@@ -117,7 +117,7 @@ namespace UniS.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "CustomeAddress", order.CustomerID);
+            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "CustomerFirstName", order.CustomerID);
             return View(order);
         }
 
