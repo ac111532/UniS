@@ -27,11 +27,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.ProductStock)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fileName)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
+            var photoPath = "~/images/" + (item.fileName);
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.ProductName)
@@ -48,6 +52,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ProductStock)
             </td>
+                <td>
+                    <img src="@photoPath" asp-append-version="true" height="100" width="100" />
+                </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ProductID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.ProductID">Details</a> |
@@ -61,6 +68,7 @@
 <div class="w-100 mt-4 d-flex flex-wrap ">
     @foreach (var item in Model)
     {
+        var photoPath = "~/images/" + (item.fileName);
         <div class="card mx-3 mb-4" style="width: 11rem;">
             @*@if (string.IsNullOrEmpty(Product.Image))
         {
@@ -72,7 +80,7 @@
         <img style="width:100%;height:180px" src="/img/@Product.Image" class="card-img-top" alt="...">
         }*/*@
             <div class="card-body">
-                <h5 class="card-title">@item.ProductName</h5>
+                <img src="@photoPath" asp-append-version="true" height="100" width="100" />
                 <p class="card-text">
                     <b>Name: </b>@item.ProductName <br />
                     <b>Description: </b>@item.ProductDescription <br />

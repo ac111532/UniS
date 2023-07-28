@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UniS.Models
@@ -23,6 +24,11 @@ namespace UniS.Models
         [Required(ErrorMessage = "Product stock is required")]
         [Range(0, int.MaxValue, ErrorMessage = "Product stock must be a positive integer")]
         public int ProductStock { get; set; }
+        public string fileName { get; set; }
+
+        [NotMapped]
+        [DisplayName("Upload File")]
+        public IFormFile imageFile { get; set; }
         public ICollection<CartItem> CartItems { get; set; }
         public ICollection<OrderItem> OrderItems { get; set; }
 

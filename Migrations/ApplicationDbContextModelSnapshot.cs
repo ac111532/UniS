@@ -405,6 +405,10 @@ namespace UniS.Migrations
                     b.Property<int>("ProductStock")
                         .HasColumnType("int");
 
+                    b.Property<string>("fileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ProductID");
 
                     b.ToTable("Product");

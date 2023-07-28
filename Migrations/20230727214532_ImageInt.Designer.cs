@@ -12,8 +12,8 @@ using UniS.Data;
 namespace UniS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230722024412_testing")]
-    partial class testing
+    [Migration("20230727214532_ImageInt")]
+    partial class ImageInt
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -406,6 +406,10 @@ namespace UniS.Migrations
 
                     b.Property<int>("ProductStock")
                         .HasColumnType("int");
+
+                    b.Property<string>("fileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ProductID");
 
