@@ -1,22 +1,58 @@
-﻿@model Product
-
-@{
+﻿@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="alert alert-info">
-    <strong>This website is a prototype and is unfinished.</strong> Everything is subject to change.
-    <p>
-        We are currently working on finalizing the design and functionality of the website. We appreciate your feedback and suggestions as we continue to develop the site.
-    </p>
-    <p>
-        Please note that some features may not be available at this time. We apologize for any inconvenience this may cause.
-    </p>
-    <p>
-        Thank you for your patience and understanding.
-    </p>
-    <p>
-        We look forward to providing you with a finished website that meets your needs.
-    </p>
-    <a href="https://www.example.com/feedback">Send feedback</a>
-</div>
+@{
+    Layout = null;
+}
+<head>
+    <link rel="stylesheet" href="~/css/Landing.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">UNIS</a>
+
+        <ul class="navlist">
+            <li><a href="#">Home</a></li>
+            <li><a asp-controller="Products" asp-action="Index">Products</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="https://www.avcol.school.nz/">Avcol Site</a></li>
+
+        </ul>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h5>By Ethan Blanch</h5>
+            <h4>Avondale College</h4>
+            <h1>Uniform</h1>
+            <p>The Avondale College uniform gives our students a strong sense of belonging and connection to the traditions of the College.</p>
+            <a asp-controller="Products" asp-action="Index">Products</a>
+            <a href="#" class="ctaa"><i class="ri-question-fill"></i>About</a>
+        </div>
+
+        <div class="hero-img">
+            <img src="img/UNisr.png">
+        </div>
+
+    </section>
+
+    <div class="icons">
+        <a href="https://www.instagram.com/avcol.nz/?hl=en"><i class="ri-instagram-line"></i></a>
+        <a href="https://www.facebook.com/avcol/"><i class="ri-facebook-circle-line"></i></a>
+        <a href="https://www.avcol.school.nz/"><i class="ri-home-4-line"></i></a>
+    </div>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="~/css/landing.js"></script>
+</body>

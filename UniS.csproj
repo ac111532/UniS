@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\homestyle.css" />
     <None Include="wwwroot\Img\Avcoly.png" />
   </ItemGroup>
 
