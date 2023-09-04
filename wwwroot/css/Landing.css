@@ -37,6 +37,10 @@ body {
     display: flex;
 }
 
+.navlist li a{
+    text-decoration:none;
+}
+
 .navlist a{
     color: white;
     margin-left: 60px;

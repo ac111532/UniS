@@ -5,50 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - UniS</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/UniS.styles.css" asp-append-version="true" />
-    <script src="https://kit.fontawesome.com/e17cfba9fc.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="~/css/site.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /
-</head>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    </head>
 <body>
-    <div id="header">
-        <a href="#"><img src="Img\Avcoly.png" class="logo" alt="" width="195.5" height="76"></a>
+    <header>
+        <a href="#" class="logo">UNIS</a>
 
-        <div>
-            <ul id="navbar">
-                <button class="button hovery" onclick="window.location.href='https://example.com'">Home</button>
-                <button class="button hovery" onclick="window.location.href='https://example.com'">About</button>
-                <a asp-area="" asp-controller="Products" class="button hovery">Products</a>
-                <a asp-area="" asp-controller="CartItems" class="button hovery">CartItem</a>
-                <a asp-area="" asp-controller="Customers" class="button hovery">Customer</a>
-                <a asp-area="" asp-controller="Orders" class="button hovery">Order</a>
-                <a asp-area="" asp-controller="OrderItems" class="button hovery">OrderItem</a>
-                <a asp-area="" asp-controller="Transactions" class="button hovery">Transaction</a>
-                <button class="button hovery" onclick="window.location.href='https://www.avcol.school.nz/'">Back to Avcol site</button>                
+        <ul class="navlist">
+            <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li><a asp-controller="Products" asp-action="Index">Products</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="https://www.avcol.school.nz/">Avcol Site</a></li>
 
-            </ul>
-        </div>
-    </div>
-    <div class="container">
+        </ul>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+
+    <div class="container" style="margin-top: 100px">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - UniS - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="~/css/layout.js"></script>
 </html>
