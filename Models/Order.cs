@@ -10,7 +10,7 @@ public class Order
     [DataType(DataType.DateTime)]
     public DateTime OrderDate { get; set; }
 
-    public int? CustomerID { get; set; }
+    public string? CustomerID { get; set; }
     public Customer Customer { get; set; }
 
     public ICollection<OrderItem> OrderItems { get; set; }

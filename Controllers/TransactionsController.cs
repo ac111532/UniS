@@ -64,7 +64,7 @@ namespace UniS.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerID", "CustomeAddress", transaction.CustomerId);
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerID", "CustomerAddress", transaction.CustomerId);
             return View(transaction);
         }
 
@@ -81,7 +81,7 @@ namespace UniS.Controllers
             {
                 return NotFound();
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerID", "CustomeAddress", transaction.CustomerId);
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerID", "CustomerAddress", transaction.CustomerId);
             return View(transaction);
         }
 
@@ -117,7 +117,7 @@ namespace UniS.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerID", "CustomeAddress", transaction.CustomerId);
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerID", "CustomerAddress", transaction.CustomerId);
             return View(transaction);
         }
 

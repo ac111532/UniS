@@ -5,7 +5,7 @@ public class Transaction
 {
     public int TransactionID { get; set; }
 
-    public int? CustomerId { get; set; }
+    public string? CustomerId { get; set; }
     public Customer Customer { get; set; }
 
     [Required(ErrorMessage = "Transaction date is required")]
