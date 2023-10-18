@@ -172,6 +172,10 @@ section{
     transform: translateY(-5px);
 }
 
+.container{
+     background-color: white;
+     border-radius: 10px;
+}
 
 @media (max-width: 1535px){
     header{
