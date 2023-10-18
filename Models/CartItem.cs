@@ -5,16 +5,17 @@
         public class CartItem
         {
             public int CartItemID { get; set; }
+            public int OrderID { get; set; }
 
-            [Required(ErrorMessage = "Cart ID is required")]
-            public int CartID { get; set; }
-
+            [Display(Name = "Product Name")]
             [Required(ErrorMessage = "Product ID is required")]
             public int? ProductID { get; set; }
 
-            [Required(ErrorMessage = "Cart quantity is required")]
-            [Range(1, int.MaxValue, ErrorMessage = "Cart quantity must be a positive integer")]
+            [Display(Name = "Product Name")]
             public int CartQuantity { get; set; }
+
+            public Product Product { get; set; }
+            public Order Order { get; set; }
 
             // Additional validation rules could be added here
 

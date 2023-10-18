@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using UniS.Data;
+using UniS.Models;
 
 namespace UniS.Controllers
 {
@@ -21,9 +24,11 @@ namespace UniS.Controllers
         // GET: Orders
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Order.Include(o => o.Customer);
-            return View(await applicationDbContext.ToListAsync());
+              return _context.Order != null ? 
+                          View(await _context.Order.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbContext.Order'  is null.");
         }
+
 
         // GET: Orders/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -34,7 +39,6 @@ namespace UniS.Controllers
             }
 
             var order = await _context.Order
-                .Include(o => o.Customer)
                 .FirstOrDefaultAsync(m => m.OrderID == id);
             if (order == null)
             {
@@ -47,7 +51,6 @@ namespace UniS.Controllers
         // GET: Orders/Create
         public IActionResult Create()
         {
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "CustomerFirstName");
             return View();
         }
 
@@ -56,15 +59,14 @@ namespace UniS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OrderID,OrderDate,CustomerID")] Order order)
+        public async Task<IActionResult> Create([Bind("OrderID,CustomerID,CustomerName,OrderDate,PickupDate,OrderStatus,CartQuantity")] Order order)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _context.Add(order);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "CustomerFirstName", order.CustomerID);
             return View(order);
         }
 
@@ -81,7 +83,6 @@ namespace UniS.Controllers
             {
                 return NotFound();
             }
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "CustomerFirstName", order.CustomerID);
             return View(order);
         }
 
@@ -90,14 +91,14 @@ namespace UniS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OrderID,OrderDate,CustomerID")] Order order)
+        public async Task<IActionResult> Edit(int id, [Bind("OrderID,CustomerID,CustomerName,OrderDate,PickupDate,OrderStatus,CartQuantity")] Order order)
         {
             if (id != order.OrderID)
             {
                 return NotFound();
             }
 
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 try
                 {
@@ -117,7 +118,6 @@ namespace UniS.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "CustomerFirstName", order.CustomerID);
             return View(order);
         }
 
@@ -130,7 +130,6 @@ namespace UniS.Controllers
             }
 
             var order = await _context.Order
-                .Include(o => o.Customer)
                 .FirstOrDefaultAsync(m => m.OrderID == id);
             if (order == null)
             {

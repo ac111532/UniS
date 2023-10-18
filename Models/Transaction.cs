@@ -1,20 +1,15 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using UniS.Models;
 
 public class Transaction
 {
+    [Key]
     public int TransactionID { get; set; }
-
-    public string? CustomerId { get; set; }
-    public Customer Customer { get; set; }
-
-    [Required(ErrorMessage = "Transaction date is required")]
-    [DataType(DataType.DateTime)]
+    public decimal TransactionAmount { get; set; }
+    public string PaymentMethod { get; set; }
     public DateTime TransactionDate { get; set; }
+    public int OrderID { get; set; }
+    public Order Order { get; set; }
 
-    [Required(ErrorMessage = "Transaction price is required")]
-    [Range(1, int.MaxValue, ErrorMessage = "Transaction price must be greater than 0")]
-    public int TransactionPrice { get; set; }
-
-    // Additional validation rules could be added here
 }

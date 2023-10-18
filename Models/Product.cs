@@ -30,22 +30,8 @@ namespace UniS.Models
         [DisplayName("Upload File")]
         public IFormFile imageFile { get; set; }
         public ICollection<CartItem> CartItems { get; set; }
-        public ICollection<OrderItem> OrderItems { get; set; }
 
         // Additional validation rules could be added hereS
 
     }
 }
-
-/* 
-Custom datatype
-
-Public enum XXX
-{
-    X,X,X
-}
-
-then
-
-Public XX XX { get; set; }
-*/

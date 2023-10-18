@@ -22,9 +22,8 @@ namespace UniS.Controllers
         // GET: CartItems
         public async Task<IActionResult> Index()
         {
-              return _context.CartItem != null ? 
-                          View(await _context.CartItem.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.CartItem'  is null.");
+            var applicationDbContext = _context.CartItem.Include(c => c.Order).Include(c => c.Product);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: CartItems/Details/5
@@ -36,6 +35,8 @@ namespace UniS.Controllers
             }
 
             var cartItem = await _context.CartItem
+                .Include(c => c.Order)
+                .Include(c => c.Product)
                 .FirstOrDefaultAsync(m => m.CartItemID == id);
             if (cartItem == null)
             {
@@ -48,6 +49,8 @@ namespace UniS.Controllers
         // GET: CartItems/Create
         public IActionResult Create()
         {
+            ViewData["OrderID"] = new SelectList(_context.Order, "OrderID", "OrderID");
+            ViewData["ProductID"] = new SelectList(_context.Product, "ProductID", "ProductDescription");
             return View();
         }
 
@@ -56,14 +59,16 @@ namespace UniS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CartItemID,CartID,ProductID,CartQuantity")] CartItem cartItem)
+        public async Task<IActionResult> Create([Bind("CartItemID,OrderID,ProductID,CartQuantity")] CartItem cartItem)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _context.Add(cartItem);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["OrderID"] = new SelectList(_context.Order, "OrderID", "OrderID", cartItem.OrderID);
+            ViewData["ProductID"] = new SelectList(_context.Product, "ProductID", "ProductDescription", cartItem.ProductID);
             return View(cartItem);
         }
 
@@ -80,6 +85,8 @@ namespace UniS.Controllers
             {
                 return NotFound();
             }
+            ViewData["OrderID"] = new SelectList(_context.Order, "OrderID", "OrderID", cartItem.OrderID);
+            ViewData["ProductID"] = new SelectList(_context.Product, "ProductID", "ProductDescription", cartItem.ProductID);
             return View(cartItem);
         }
 
@@ -88,14 +95,14 @@ namespace UniS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CartItemID,CartID,ProductID,CartQuantity")] CartItem cartItem)
+        public async Task<IActionResult> Edit(int id, [Bind("CartItemID,OrderID,ProductID,CartQuantity")] CartItem cartItem)
         {
             if (id != cartItem.CartItemID)
             {
                 return NotFound();
             }
 
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 try
                 {
@@ -115,6 +122,8 @@ namespace UniS.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["OrderID"] = new SelectList(_context.Order, "OrderID", "OrderID", cartItem.OrderID);
+            ViewData["ProductID"] = new SelectList(_context.Product, "ProductID", "ProductDescription", cartItem.ProductID);
             return View(cartItem);
         }
 
@@ -127,6 +136,8 @@ namespace UniS.Controllers
             }
 
             var cartItem = await _context.CartItem
+                .Include(c => c.Order)
+                .Include(c => c.Product)
                 .FirstOrDefaultAsync(m => m.CartItemID == id);
             if (cartItem == null)
             {

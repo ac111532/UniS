@@ -17,31 +17,10 @@ namespace UniS.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.20")
+                .HasAnnotation("ProductVersion", "6.0.23")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("Cart", b =>
-                {
-                    b.Property<int>("CartID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CartID"), 1L, 1);
-
-                    b.Property<DateTime>("CartDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CustomerId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("CartID");
-
-                    b.HasIndex("CustomerId");
-
-                    b.ToTable("Cart");
-                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -251,53 +230,6 @@ namespace UniS.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Order", b =>
-                {
-                    b.Property<int>("OrderID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"), 1L, 1);
-
-                    b.Property<string>("CustomerID")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("OrderDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("OrderID");
-
-                    b.HasIndex("CustomerID");
-
-                    b.ToTable("Order");
-                });
-
-            modelBuilder.Entity("OrderItem", b =>
-                {
-                    b.Property<int>("OrderItemID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderItemID"), 1L, 1);
-
-                    b.Property<int>("OrderID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("OrderItemID");
-
-                    b.HasIndex("OrderID");
-
-                    b.HasIndex("ProductID");
-
-                    b.ToTable("OrderItem");
-                });
-
             modelBuilder.Entity("Transaction", b =>
                 {
                     b.Property<int>("TransactionID")
@@ -309,15 +241,25 @@ namespace UniS.Migrations
                     b.Property<string>("CustomerId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("OrderID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PaymentMethod")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("TransactionAmount")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<DateTime>("TransactionDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("TransactionPrice")
-                        .HasColumnType("int");
 
                     b.HasKey("TransactionID");
 
                     b.HasIndex("CustomerId");
+
+                    b.HasIndex("OrderID")
+                        .IsUnique();
 
                     b.ToTable("Transaction");
                 });
@@ -330,10 +272,10 @@ namespace UniS.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CartItemID"), 1L, 1);
 
-                    b.Property<int>("CartID")
+                    b.Property<int>("CartQuantity")
                         .HasColumnType("int");
 
-                    b.Property<int>("CartQuantity")
+                    b.Property<int>("OrderID")
                         .HasColumnType("int");
 
                     b.Property<int?>("ProductID")
@@ -342,11 +284,49 @@ namespace UniS.Migrations
 
                     b.HasKey("CartItemID");
 
-                    b.HasIndex("CartID");
+                    b.HasIndex("OrderID");
 
                     b.HasIndex("ProductID");
 
                     b.ToTable("CartItem");
+                });
+
+            modelBuilder.Entity("UniS.Models.Order", b =>
+                {
+                    b.Property<int>("OrderID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"), 1L, 1);
+
+                    b.Property<int>("CartQuantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CustomerID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CustomerName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("OrderStatus")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("PickupDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("OrderID");
+
+                    b.HasIndex("CustomerID");
+
+                    b.ToTable("Order");
                 });
 
             modelBuilder.Entity("UniS.Models.Product", b =>
@@ -393,10 +373,6 @@ namespace UniS.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("CustomerEmail")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("CustomerFirstName")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -407,20 +383,7 @@ namespace UniS.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("CustomerPhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasDiscriminator().HasValue("Customer");
-                });
-
-            modelBuilder.Entity("Cart", b =>
-                {
-                    b.HasOne("Customer", "Customer")
-                        .WithMany("Carts")
-                        .HasForeignKey("CustomerId");
-
-                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -474,25 +437,31 @@ namespace UniS.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Order", b =>
+            modelBuilder.Entity("Transaction", b =>
                 {
-                    b.HasOne("Customer", "Customer")
-                        .WithMany("Orders")
-                        .HasForeignKey("CustomerID");
+                    b.HasOne("Customer", null)
+                        .WithMany("Transactions")
+                        .HasForeignKey("CustomerId");
 
-                    b.Navigation("Customer");
+                    b.HasOne("UniS.Models.Order", "Order")
+                        .WithOne("Transaction")
+                        .HasForeignKey("Transaction", "OrderID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
                 });
 
-            modelBuilder.Entity("OrderItem", b =>
+            modelBuilder.Entity("UniS.Models.CartItem", b =>
                 {
-                    b.HasOne("Order", "Order")
-                        .WithMany("OrderItems")
+                    b.HasOne("UniS.Models.Order", "Order")
+                        .WithMany("CartItem")
                         .HasForeignKey("OrderID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("UniS.Models.Product", "Product")
-                        .WithMany("OrderItems")
+                        .WithMany("CartItems")
                         .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -502,51 +471,30 @@ namespace UniS.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("Transaction", b =>
+            modelBuilder.Entity("UniS.Models.Order", b =>
                 {
-                    b.HasOne("Customer", "Customer")
-                        .WithMany("Transactions")
-                        .HasForeignKey("CustomerId");
-
-                    b.Navigation("Customer");
-                });
-
-            modelBuilder.Entity("UniS.Models.CartItem", b =>
-                {
-                    b.HasOne("Cart", null)
-                        .WithMany("CartItems")
-                        .HasForeignKey("CartID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("UniS.Models.Product", null)
-                        .WithMany("CartItems")
-                        .HasForeignKey("ProductID")
+                    b.HasOne("Customer", null)
+                        .WithMany("Orders")
+                        .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Cart", b =>
+            modelBuilder.Entity("UniS.Models.Order", b =>
                 {
-                    b.Navigation("CartItems");
-                });
+                    b.Navigation("CartItem");
 
-            modelBuilder.Entity("Order", b =>
-                {
-                    b.Navigation("OrderItems");
+                    b.Navigation("Transaction")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("UniS.Models.Product", b =>
                 {
                     b.Navigation("CartItems");
-
-                    b.Navigation("OrderItems");
                 });
 
             modelBuilder.Entity("Customer", b =>
                 {
-                    b.Navigation("Carts");
-
                     b.Navigation("Orders");
 
                     b.Navigation("Transactions");

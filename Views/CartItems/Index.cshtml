@@ -15,6 +15,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.CartQuantity)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -23,6 +29,12 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.CartQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.ProductDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order.OrderID)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.CartItemID">Edit</a> |

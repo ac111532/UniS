@@ -18,7 +18,6 @@ public class Customer : IdentityUser
     public string CustomerAddress { get; set; }
 
     public ICollection<Order> Orders { get; set; }
-    public ICollection<Cart> Carts { get; set; }
     public ICollection<Transaction> Transactions { get; set; }
 
     // Additional validation rules could be added here

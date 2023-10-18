@@ -1,19 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-public class Order
+
+namespace UniS.Models
 {
-    public int OrderID { get; set; }
+    public enum Status
+    {
+        Incomplete,
+        Processing,
+        Finalised
+    }
+    public class Order
+    {
+        [Display(Name = "Order ID")]
+        public int OrderID { get; set; }
 
-    [Required(ErrorMessage = "Order date is required")]
-    [DataType(DataType.DateTime)]
-    public DateTime OrderDate { get; set; }
+        public string CustomerID { get; set; }
+        
+        [Display(Name = "Customer")]
+        public string CustomerName { get; set; }
 
-    public string? CustomerID { get; set; }
-    public Customer Customer { get; set; }
 
-    public ICollection<OrderItem> OrderItems { get; set; }
+        [DataType(DataType.DateTime)]
+        [Display(Name = "Order Date")]
+        public DateTime OrderDate { get; set; }
 
-    // Additional validation rules could be added here
+        [Display(Name = "Scheduled Pick up date")]
+        public DateTime PickupDate { get; set; }
+
+        [Display(Name = "Order Progress")]
+        public Status OrderStatus { get; set; }
+
+        [Display(Name = "Number of items in cart")]
+        public int CartQuantity { get; set; }
+
+        [Display(Name = "Total Price")]
+        public decimal TotalPrice { get; set; }
+
+        public Transaction Transaction { get; set; }
+
+        public ICollection<CartItem> CartItem { get; set; }
+
+        // Additional validation rules could be added here
+    }
 }
