@@ -15,5 +15,13 @@ namespace UniS.Data
         public DbSet<Order>? Order { get; set; }
         public DbSet<UniS.Models.Product>? Product { get; set; }
         public DbSet<Transaction>? Transaction { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            // Use seed method here
+            builder.Seed();
+        }
     }
 }
