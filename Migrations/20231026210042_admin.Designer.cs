@@ -12,7 +12,7 @@ using UniS.Data;
 namespace UniS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231025215010_admin")]
+    [Migration("20231026210042_admin")]
     partial class admin
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,10 +53,17 @@ namespace UniS.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2c5e174e-3b0e-446f-86af-483d56fd7210",
-                            ConcurrencyStamp = "53806162-e6f9-4069-be35-cda1f56b8ace",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
+                            Id = "a127d843-2b89-407e-b47b-693c261c5b6b",
+                            ConcurrencyStamp = "61fdce04-cdd8-4e63-8a30-c426c9e7a7a3",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "a9cd2d1d-e9ff-4420-90c0-43ccfdfd4f19",
+                            ConcurrencyStamp = "14bebbd4-3845-4259-8fc9-333f331d02ab",
+                            Name = "Customer",
+                            NormalizedName = "CUSTOMER"
                         });
                 });
 
@@ -154,24 +161,6 @@ namespace UniS.Migrations
                     b.ToTable("AspNetUsers", (string)null);
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "8e445865-a24d-4543-a6c6-9443d048cdb9",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "e3d58b74-fdda-4f34-8065-47932b7ed13f",
-                            Email = "admin@avcol.school.nz",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@AVCOL.SCHOOL.NZ",
-                            NormalizedUserName = "MYUSER",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJOyzaqNrn3GUWXpHlD8ZY/XE4DSRqadtHbiTD56yMtFDA/6Ee1V1kg/THvSSwLkRA==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "213c362b-55e8-4420-ac66-8b452777c1ae",
-                            TwoFactorEnabled = false,
-                            UserName = "myuser"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -238,8 +227,13 @@ namespace UniS.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "8e445865-a24d-4543-a6c6-9443d048cdb9",
-                            RoleId = "2c5e174e-3b0e-446f-86af-483d56fd7210"
+                            UserId = "07839ff0-9e60-41f2-8d5e-323361f7a506",
+                            RoleId = "a127d843-2b89-407e-b47b-693c261c5b6b"
+                        },
+                        new
+                        {
+                            UserId = "d68332da-0345-4160-a7fb-1cc9897cbfb0",
+                            RoleId = "a9cd2d1d-e9ff-4420-90c0-43ccfdfd4f19"
                         });
                 });
 
@@ -416,6 +410,46 @@ namespace UniS.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.HasDiscriminator().HasValue("Customer");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "07839ff0-9e60-41f2-8d5e-323361f7a506",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "e56cffee-2257-4eb9-a3d7-77ff5fe58b2e",
+                            Email = "admin@avcol.school.nz",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@AVCOL.SCHOOL.NZ",
+                            NormalizedUserName = "ADMIN@AVCOL.SCHOOL.NZ",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBp57Sy8Dn2PkqkMRuO+HtTu2mBrRsPDRa1DpmIeTFJpLl4KWiU2EjbxduQqpqa5KA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "f1a39ef3-3b05-40c5-a7fb-c2f17ad67055",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@avcol.school.nz",
+                            CustomerAddress = "School",
+                            CustomerFirstName = "Admin",
+                            CustomerLastName = "Account"
+                        },
+                        new
+                        {
+                            Id = "d68332da-0345-4160-a7fb-1cc9897cbfb0",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "7bd0b606-64fd-4aae-8e2c-19993b208702",
+                            Email = "testcustomer@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "TESTCUSTOMER@GMAIL.COM",
+                            NormalizedUserName = "TESTCUSTOMER@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAECyP4qPW2iPISx0DxVElVgJVi4lkHVoNq/RlgbGUWiQ6ajiVCK5MycsMu+eMFlPx1g==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "9ffba7b9-93f1-4622-8d79-9f531b4120c1",
+                            TwoFactorEnabled = false,
+                            UserName = "testcustomer@gmail.com",
+                            CustomerAddress = "Home",
+                            CustomerFirstName = "Customer",
+                            CustomerLastName = "Account"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

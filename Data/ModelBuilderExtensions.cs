@@ -12,7 +12,7 @@ namespace UniS.Data
         public static void Seed(this ModelBuilder builder)
         {
             var pwd = "P@$$w0rd";
-            var passwordHasher = new PasswordHasher<IdentityUser>();
+            var passwordHasher = new PasswordHasher<Customer>();
 
             // Seed Roles
             var adminRole = new IdentityRole("Admin");
@@ -30,32 +30,39 @@ namespace UniS.Data
 
 
             // Seed Users
-            var adminUser = new IdentityUser
+            var adminUser = new Customer
             {
                 UserName = "admin@avcol.school.nz",
                 Email = "admin@avcol.school.nz",
                 EmailConfirmed = true,
+                CustomerFirstName = "Admin",
+                CustomerLastName = "Account",
+                CustomerAddress = "School",
             };
             adminUser.NormalizedUserName = adminUser.UserName.ToUpper();
             adminUser.NormalizedEmail = adminUser.Email.ToUpper();
             adminUser.PasswordHash = passwordHasher.HashPassword(adminUser, pwd);
 
-            var customerUser = new IdentityUser
+            var customerUser = new Customer
             {
                 UserName = "testcustomer@gmail.com",
                 Email = "testcustomer@gmail.com",
                 EmailConfirmed = true,
+                CustomerFirstName = "Customer",
+                CustomerLastName = "Account",
+                CustomerAddress = "Home",
+
             };
             customerUser.NormalizedUserName = customerUser.UserName.ToUpper();
             customerUser.NormalizedEmail = customerUser.Email.ToUpper();
             customerUser.PasswordHash = passwordHasher.HashPassword(customerUser, pwd);
 
-            List<IdentityUser> users = new List<IdentityUser>() {
+            List<Customer> users = new List<Customer>() {
                 adminUser,
                 customerUser,
             };
 
-            builder.Entity<IdentityUser>().HasData(users);
+            builder.Entity<Customer>().HasData(users);
 
             // Seed UserRoles
             List<IdentityUserRole<string>> userRoles = new List<IdentityUserRole<string>>();

@@ -1,40 +1,22 @@
-﻿@model IEnumerable<UniS.Models.Product>
+﻿@using Microsoft.AspNetCore.Identity;
+@model IEnumerable<UniS.Models.Product>
+@inject SignInManager<Customer> SignInManager
+@inject UserManager<Customer> UserManager
 
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Products";
 }
 
-<h1>Index</h1>
+<h1>Products</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductSize)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductStock)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.fileName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+@if (SignInManager.IsSignedIn(User) && UserManager.GetUserAsync(User).Result.UserName == "admin@avcol.school.nz")
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+
 @foreach (var item in Model) {
             var photoPath = "~/images/" + (item.fileName);
         <tr>
