@@ -1,4 +1,10 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<Customer> SignInManager
+@inject UserManager<Customer> UserManager
+@inject ApplicationDbContext context
+@using UniS.Data;
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -25,6 +31,15 @@
             <li><a href="#">About</a></li>
             <li><a asp-controller="Home" asp-action="Privacy">Privacy</a></li>
             <li><a href="https://www.avcol.school.nz/">Avcol Site</a></li>
+            @if (SignInManager.IsSignedIn(User) && UserManager.GetUserAsync(User).Result.UserName == "admin@avcol.school.nz")
+            {
+                <li><a asp-controller="Orders" asp-action="Index">Orders</a></li>
+                <li><a asp-controller="Customers" asp-action="Index">Customer List</a></li>
+            }
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <li><a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserAsync(User).Result.CustomerFirstName!</a></li>
+            }
 
         </ul>
 

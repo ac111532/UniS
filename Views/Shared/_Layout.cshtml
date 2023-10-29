@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<Customer> SignInManager
+@inject UserManager<Customer> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -23,6 +27,11 @@
             <li><a href="#">About</a></li>
             <li><a asp-controller="Home" asp-action="Privacy">Privacy</a></li>
             <li><a href="https://www.avcol.school.nz/">Avcol Site</a></li>
+            @if (SignInManager.IsSignedIn(User) && UserManager.GetUserAsync(User).Result.UserName == "admin@avcol.school.nz")
+            {
+                <li><a asp-controller="Orders" asp-action="Index">Orders</a></li>
+                <li><a asp-controller="Customers" asp-action="Index">Customer List</a></li>
+            }
 
         </ul>
 
