@@ -57,5 +57,5 @@ The above copyright notice and this permission notice shall be included in all c
 
 ## Authors
 
-* **Ethan Blanch** - *Student* - [Ethan Blanch](https://github.com/ac111532) - *Project Dev*
+* [Ethan Blanch](https://github.com/ac111532) - *Student* - *Project Dev*
 
