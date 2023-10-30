@@ -21,6 +21,5 @@ public class Customer : IdentityUser
     public ICollection<Order> Orders { get; set; }
     public ICollection<Transaction> Transactions { get; set; }
 
-    // Additional validation rules could be added here
-    //This Validation is missing naming.
+    // This model holds both the information about the customer, and the IdentityUser class that I created for the rolls to be added to. Without this, you wouldn't have role authorisation.
 }

@@ -26,12 +26,13 @@ namespace UniS.Models
         public int ProductStock { get; set; }
         public string fileName { get; set; }
 
+        // This IFormFile is used to request an image file from the user to show as the product image.
         [NotMapped]
         [DisplayName("Upload File")]
-        public IFormFile imageFile { get; set; }
+        public IFormFile imageFile { get; set; } 
         public ICollection<CartItem> CartItems { get; set; }
 
-        // Additional validation rules could be added hereS
+        // Crucial model to the site, this holds and defines data dependant on products, and how they relate to the uers cart.
 
     }
 }

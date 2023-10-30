@@ -17,7 +17,7 @@
             public Product Product { get; set; }
             public Order Order { get; set; }
 
-            // Additional validation rules could be added here
+            // The model here is used for creating a cart item, which a product is turned into before being added to an order. Makes a customers cart Viewable.
 
         }
     }

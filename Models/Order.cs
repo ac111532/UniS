@@ -40,6 +40,6 @@ namespace UniS.Models
 
         public ICollection<CartItem> CartItem { get; set; }
 
-        // Additional validation rules could be added here
+        // This model contains information about orders, their creation date, and how they are linked to the customer nad their cart.
     }
 }

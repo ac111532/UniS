@@ -12,4 +12,6 @@ public class Transaction
     public int OrderID { get; set; }
     public Order Order { get; set; }
 
+    //Unfortunately, this model and connected code in the products controler has gone unused, but everything is here to be implemented at a later date.
+
 }

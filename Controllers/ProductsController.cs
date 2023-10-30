@@ -34,7 +34,7 @@ namespace UniS.Controllers
                           Problem("Entity set 'ApplicationDbContext.Product'  is null.");
         }
 
-        [Authorize]
+        [Authorize] /*Creation of a cart for each individual user, as well as creation of an order for each customer. I also wrote code for transactions, but didn't have a chance to implement it propely.*/
         public async Task<IActionResult> AddToCart(int id, string? search)
         {
             var user = await _userManager.GetUserAsync(User);
@@ -49,7 +49,7 @@ namespace UniS.Controllers
 
             if (first == null)
             {
-                var newOrder = new Order
+                var newOrder = new Order /* Creates The new Order */
                 {
                     OrderDate = DateTime.Now,
                     PickupDate = DateTime.Now,
@@ -102,7 +102,7 @@ namespace UniS.Controllers
                     int? Error = 0;
                     if (product.ProductStock > 0)
                     {
-                        var newShoppingItem = new CartItem
+                        var newShoppingItem = new CartItem /* Creates The new Cart */
                         {
                             OrderID = first.OrderID,
                             ProductID = (int)id,
@@ -129,7 +129,7 @@ namespace UniS.Controllers
             }
             else
             {
-                var newOrder = new Order
+                var newOrder = new Order /* Creates The new Order, if there was already one */
                 {
                     OrderDate = DateTime.Now,
                     PickupDate = DateTime.Now,

@@ -10,7 +10,7 @@
 
 <h1>Products</h1>
 
-@if (SignInManager.IsSignedIn(User) && UserManager.GetUserAsync(User).Result.UserName == "admin@avcol.school.nz")
+@if (SignInManager.IsSignedIn(User) && UserManager.GetUserAsync(User).Result.UserName == "admin@avcol.school.nz")  @* Ensures only admins can create products *@
 {
     <p>
         <a asp-action="Create">Create New</a>
@@ -21,7 +21,7 @@
     @foreach (var item in Model)
     {
         var photoPath = "~/images/" + (item.fileName);
-        <div class="card m-1" style="width: 20rem;">
+        <div class="card m-1" style="width: 20rem;"> @* Creates A card, and populates it with information from the product model *@
             @if (string.IsNullOrEmpty(item.fileName))
             {
                 <img style="width:100%;height:180px" src="/images/NoImage.png" class="card-img-top" alt="...">
@@ -33,7 +33,7 @@
             <div class="card-body">
                 <h5 class="card-title">@item.ProductName</h5>
                 <p class="card-text">@item.ProductDescription</p>
-                @if (item.ProductStock <= 0)
+                @if (item.ProductStock <= 0)  @* Stops something being added to cart if out of stock *@
                 {
                     <a class="btn btn-primary" style="color:red;">Out of stock</a>
                 }
@@ -41,7 +41,7 @@
                 {
                     <a asp-action="AddToCart" asp-route-id="@item.ProductID" class="btn btn-primary">Add to cart</a>
                 }
-                @if (SignInManager.IsSignedIn(User) && UserManager.GetUserAsync(User).Result.UserName == "admin@avcol.school.nz")
+                @if (SignInManager.IsSignedIn(User) && UserManager.GetUserAsync(User).Result.UserName == "admin@avcol.school.nz") @* Ensures only admins can edit products *@
                 {
                     <p>
                         <a asp-action="Edit" asp-route-id="@item.ProductID">Edit</a> |

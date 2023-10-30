@@ -23,11 +23,10 @@
 <body>
 
     <header>
-        <a asp-controller="Home" asp-action="Index" class="logo">UNIS</a>
+        <a asp-controller="Home" asp-action="Index" class="logo">UNIS</a> @* Most of this page is just some stylized css *@
 
         <ul class="navlist">
-@*            <li><a href="#">Home</a></li>
-*@          <li><a asp-controller="Products" asp-action="Index">Products</a></li>
+            <li><a asp-controller="Products" asp-action="Index">Products</a></li>
             <li><a asp-controller="Home" asp-action="Privacy">Privacy</a></li>
             <li><a href="https://www.avcol.school.nz/">Avcol Site</a></li>
             @if (SignInManager.IsSignedIn(User))
@@ -41,7 +40,7 @@
             }
             @if (SignInManager.IsSignedIn(User))
             {
-                <li><a class="nav-link text-light" title="Manage">Hello @UserManager.GetUserAsync(User).Result.CustomerFirstName!</a></li>
+                <li><a class="nav-link text-light">Hello @UserManager.GetUserAsync(User).Result.CustomerFirstName!</a></li>
             }
             @if (SignInManager.IsSignedIn(User))
             {

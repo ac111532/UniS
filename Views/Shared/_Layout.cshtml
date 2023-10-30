@@ -19,7 +19,7 @@
     </head>
 <body>
     <header>
-        <a asp-controller="Home" asp-action="Index" class="logo">UNIS</a>
+        <a asp-controller="Home" asp-action="Index" class="logo">UNIS</a> @* Most of this page is just some stylized css *@
 
         <ul class="navlist">
             <li><a asp-controller="Home" asp-action="Index">Home</a></li>
@@ -45,7 +45,7 @@
         <div class="bx bx-menu" id="menu-icon"></div>
     </header>
 
-    <div class="container" style="margin-top: 100px">
+    <div class="container" style="margin-top: 100px"> @* The white box most of the sites content is contained in, makes the difference between usable and not. *@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
