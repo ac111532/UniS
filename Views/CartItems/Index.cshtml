@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<UniS.Models.CartItem>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "My Cart";
 }
 
-<h1>Index</h1>
+<h1>My Cart</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -28,10 +28,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CartQuantity)
+                @Html.DisplayFor(modelItem => item.Product.ProductName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Product.ProductDescription)
+                @Html.DisplayFor(modelItem => item.CartQuantity)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Order.OrderID)

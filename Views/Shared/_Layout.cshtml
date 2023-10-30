@@ -27,10 +27,18 @@
             <li><a href="#">About</a></li>
             <li><a asp-controller="Home" asp-action="Privacy">Privacy</a></li>
             <li><a href="https://www.avcol.school.nz/">Avcol Site</a></li>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <li><a asp-controller="CartItems" asp-action="Index">View Cart</a></li>
+            }
             @if (SignInManager.IsSignedIn(User) && UserManager.GetUserAsync(User).Result.UserName == "admin@avcol.school.nz")
             {
                 <li><a asp-controller="Orders" asp-action="Index">Orders</a></li>
                 <li><a asp-controller="Customers" asp-action="Index">Customer List</a></li>
+            }
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <li><a href="/identity/account/logout">Logout</a></li>
             }
 
         </ul>
