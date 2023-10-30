@@ -39,13 +39,12 @@ Below are instructions for getting a local version of the shop to run for debugg
 
 1. Download Zip file
 2. Open file in Visual Studio (2022+ recommended)
-3. Run the command "update-database -Context ApplicationDbContext" in the NuGet Package Manager Console
+3. Run the command "update-database" in the NuGet Package Manager Console
 5. Run/Debug to start localhost site.
 
 ## Roadmap
 
 https://trello.com/b/HS6TA96C/unis-development
-
 
 ## License
 
@@ -58,5 +57,5 @@ The above copyright notice and this permission notice shall be included in all c
 
 ## Authors
 
-* **Ethan Blanch** - *Student* - [Ethan Blanch](https://github.com/ac111532) - *Project Dev*
+* [Ethan Blanch](https://github.com/ac111532) - *Student* - *Project Dev*
 
