@@ -46,16 +46,6 @@ Below are instructions for getting a local version of the shop to run for debugg
 
 https://trello.com/b/HS6TA96C/unis-development
 
-## System Requirments
-
-Processor: 1+ GHz, 4 or more cores
-RAM:	512 MB
-Minimum disk space (32-bit)	4.5 GB
-Minimum disk space (64-bit)	4.5 GB
-OS: Windows 11 (Reccomended), Windows 10
-Display: 1280x720+ (Developed on 2560x1440)
-
-
 ## License
 
 Copyright (C) Ethan Blanch - All Rights Reserved.
