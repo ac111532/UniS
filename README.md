@@ -39,12 +39,21 @@ Below are instructions for getting a local version of the shop to run for debugg
 
 1. Download Zip file
 2. Open file in Visual Studio (2022+ recommended)
-3. Run the command "update-database -Context ApplicationDbContext" in the NuGet Package Manager Console
+3. Run the command "update-database" in the NuGet Package Manager Console
 5. Run/Debug to start localhost site.
 
 ## Roadmap
 
 https://trello.com/b/HS6TA96C/unis-development
+
+## System Requirments
+
+Processor: 1+ GHz, 4 or more cores
+RAM:	512 MB
+Minimum disk space (32-bit)	4.5 GB
+Minimum disk space (64-bit)	4.5 GB
+OS: Windows 11 (Reccomended), Windows 10
+Display: 1280x720+ (Developed on 2560x1440)
 
 
 ## License
