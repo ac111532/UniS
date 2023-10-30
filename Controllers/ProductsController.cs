@@ -159,9 +159,9 @@ namespace UniS.Controllers
 
                 orders = orders.OrderByDescending(s => s.OrderDate);
                 var updatedfirst = orders.FirstOrDefault();
-                var newShoppingItem = new CartItem
+                var newShoppingItem = new CartItem  
                 {
-                    OrderID = updatedfirst.OrderID,
+                    OrderID = updatedfirst.OrderID,     /*THIS WILL THROW AN ERROR ON ADDING TO CART INITIALLY, SIMPLY RESTART THE APPLICATION AND CONTINUE AS NORMAL, THE PRODUCT WILL ADD NORMALLY*/
                     ProductID = (int)id,
                     CartQuantity = 1
                 };

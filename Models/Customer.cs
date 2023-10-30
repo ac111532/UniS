@@ -6,6 +6,7 @@ public class Customer : IdentityUser
 {
 
     [Required(ErrorMessage = "First name is required")]
+    [Display(Name = "Customer Name")]
     [StringLength(50, ErrorMessage = "First name cannot be longer than 50 characters")]
     public string CustomerFirstName { get; set; }
 

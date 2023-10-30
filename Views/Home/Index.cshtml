@@ -28,7 +28,6 @@
         <ul class="navlist">
 @*            <li><a href="#">Home</a></li>
 *@          <li><a asp-controller="Products" asp-action="Index">Products</a></li>
-            <li><a href="#">About</a></li>
             <li><a asp-controller="Home" asp-action="Privacy">Privacy</a></li>
             <li><a href="https://www.avcol.school.nz/">Avcol Site</a></li>
             @if (SignInManager.IsSignedIn(User))
@@ -61,7 +60,7 @@
             <h1>Uniform</h1>
             <p>The Avondale College uniform gives our students a strong sense of belonging and connection to the traditions of the College.</p>
             <a asp-controller="Products" asp-action="Index">Products</a>
-            <a href="#" class="ctaa"><i class="ri-question-fill"></i>About</a>
+            <a asp-controller="Home" asp-action="Privacy" class="ctaa"><i class="ri-question-fill"></i>Privacy</a>
         </div>
 
         <div class="hero-img">
